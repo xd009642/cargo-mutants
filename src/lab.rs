@@ -53,11 +53,12 @@ pub fn test_clean_then_all_mutants(
         return Ok(lab_outcome); // TODO: Maybe should be Err?
     }
 
-    let mutations = source_tree.mutations()?;
+    let mutations = source_tree.mutations(console)?;
     serde_json::to_writer_pretty(
         BufWriter::new(File::create(output_dir.path().join("mutants.json"))?),
         &mutations,
     )?;
+
     for mutation in mutations {
         lab_outcome.add(&test_mutation(
             &mutation,

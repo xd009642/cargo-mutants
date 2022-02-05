@@ -90,6 +90,10 @@ impl<'c> Activity<'c> {
         }
     }
 
+    pub fn finish_with_message(self, message: &str) {
+        self.finish(style(message))
+    }
+
     pub fn tick(&mut self) {
         self.progress_bar.tick();
     }

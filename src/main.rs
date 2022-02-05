@@ -85,7 +85,7 @@ fn main() -> Result<()> {
     let options = Options::from(&args);
     interrupt::install_handler();
     if args.list {
-        let mutations = source_tree.mutations()?;
+        let mutations = source_tree.mutations(&console)?;
         if args.json {
             if args.diff {
                 eprintln!("--list --diff --json is not (yet) supported");
